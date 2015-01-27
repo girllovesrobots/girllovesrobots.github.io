@@ -1,6 +1,7 @@
 Personal Website
 =============
 Date Created: 26 Jan 2015
+
 Last Updated: 26 Jan 2015
 
 This personal website was created entirely from scratch as a side project enabling me to learn and gain familiarity with website design.
