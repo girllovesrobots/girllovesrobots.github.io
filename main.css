@@ -37,6 +37,19 @@ p {
 	padding-right: 5em;
 }
 
+/*Tiles*/
+smsection {
+  display: inline-block;
+  margin: 0 1.5%;
+  width: 30%;
+}
+
+section {
+	display: inline-block;
+	margin: 0 1.5%;
+	width: 45%;
+}
+
 /*Navigation Bar Style*/
 nav {
 	background-color: #70288F;
@@ -86,6 +99,25 @@ a:hover {
     padding:0px;
 }
 
+/* Content */
+.tile-indigo,
+.tile-lilac {
+	margin: 0 0 25px;
+	overflow: hidden;
+	padding: 15px;
+}
+
+.tile-indigo {
+	background-color: #8e80b2;
+	border: 1px solid #240C61;
+}
+
+.tile-lilac {
+	background-color: #dfd2ff;
+	border: #65626d;
+}
+
+
 
 /* Color List */
 /*
@@ -134,8 +166,3 @@ a:hover {
 }
 
 */
-
-
-
-
-
