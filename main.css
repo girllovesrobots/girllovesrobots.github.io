@@ -11,8 +11,6 @@ body {
 
 h1, h2 {
 	font-family: 'Roboto Slab', serif;
-	font-size: 3em;
-	font-weight: 200;
 	text-align: center;
 	color: #43065E;
 }
@@ -26,6 +24,23 @@ h3 {
 
 h1 {
 	padding-top: 20px;
+	font-size: 3em;
+	font-weight: 200;
+}
+
+h2 {
+	padding-top: 10px;
+	font-size: 2em;
+	font-weight: 150;
+}
+
+h4 {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1em;
+	color: #381C7B;
+	padding-top: 20px;
+	padding-left: 5em;
+	padding-right: 5em;
 }
 
 p {
@@ -37,17 +52,19 @@ p {
 	padding-right: 5em;
 }
 
-/*Tiles*/
+/*Sections*/
 smsection {
   display: inline-block;
+	vertical-align: top;
   margin: 0 1.5%;
-  width: 30%;
+  width: 40%;
 }
 
 section {
 	display: inline-block;
+	vertical-align: top;
 	margin: 0 1.5%;
-	width: 45%;
+	width: 53%;
 }
 
 /*Navigation Bar Style*/
