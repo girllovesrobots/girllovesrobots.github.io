@@ -1,0 +1,141 @@
+/*
+ CSS Stylesheet
+ github.com/girllovesrobos
+ */
+
+body {
+	font-family: 'Roboto Slab', serif;
+	font-family: 'Open Sans', sans-serif;
+	overflow-x: hidden;
+}
+
+h1, h2 {
+	font-family: 'Roboto Slab', serif;
+	font-size: 3em;
+	font-weight: 200;
+	text-align: center;
+	color: #43065E;
+}
+
+h3 {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 200;
+	text-align: center;
+	font-size: 2em;
+}
+
+h1 {
+	padding-top: 20px;
+}
+
+p {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.5em;
+	color: #381C7B;
+	padding-top: 20px;
+	padding-left: 5em;
+	padding-right: 5em;
+}
+
+/*Navigation Bar Style*/
+nav {
+	background-color: #70288F;
+	text-align: center;
+	width: 100%;
+}
+
+nav .container {
+	width: 100%;
+	max-width: 768px;
+}
+
+nav div {
+	display: inline-block;
+	list-style-type: none;
+	text-align: center;
+	width: 20%;
+	padding: 5px;
+}
+
+nav div a {
+	text-decoration: bold;
+	font-size: 2em;
+}
+
+a:link {
+	color: #C7A5D6;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #C7A5D6;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #DB76A9;
+	text-decoration: none;
+}
+
+/*Centered-Image p class*/
+
+.centered-image {
+    text-align:center;
+    margin-top:0px;
+    margin-bottom:0px;
+    padding:0px;
+}
+
+
+/* Color List */
+/*
+.royalpurple {
+	background-color: #70288F;
+}
+
+.indigo {
+	background-color: #4C3094;
+}
+
+.fushia {
+	background-color: #B12B6F;
+}
+
+.royalpurple1 {
+	color: #43065E;
+}
+
+.royalpurple2 {
+	color: #591577;
+}
+
+.royalpurple3 {
+	color: #A269BB;
+}
+
+.indigo1 {
+	color: #240C61;
+}
+
+.indigo2 {
+	color: #381C7B;
+}
+
+.indigo3 {
+	color: #6249A4;
+}
+
+.fushia1 {
+	color: #74023C;
+}
+
+.fushia2 {
+	color: #DB76A9;
+}
+
+*/
+
+
+
+
+
