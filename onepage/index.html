@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,8 +34,6 @@
 
     <!-- Slick CSS -->
     <style type="text/css">
-
-
       .slider {
           width: 80%;
           margin: 10px auto;
@@ -60,7 +57,6 @@
           color: black;
       }
     </style>
-
 </head>
 
 <body id="page-top" class="index">
@@ -237,22 +233,8 @@
         </div>
     </section>
 
-    
-
     <!-- Footer -->
     <footer class="text-center">
-        <div class="footer-above">
-            <div class="container">
-                <div class="row">
-                    <div class="footer-col col-md-4">
-                        <h3>Location</h3>
-                        <p>3481 Melrose Place
-                            <br>Beverly Hills, CA 90210</p>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
         <div class="footer-below">
             <div class="container">
                 <div class="row">
@@ -402,7 +384,7 @@
                             <h2>Drawing for Designers Porfolio</h2>
                             <hr class="star-primary">
                             <p>Selected drawings and mixed media pieces created over the course of the semester in 21M.601 Drawing for Designers. First formal fine arts class.</p>
-                            <div class="content slider responsive">
+                            <div class="regular slider">
                                 <div><img src="img/portfolio/drawingfordesigners/gesture.jpg">Gesture - charcoal 02.28.2017</div>
                                 <div><img src="img/portfolio/drawingfordesigners/figure.jpg">Figure - charcoal 02.28.2017</div>
                                 <div><img src="img/portfolio/drawingfordesigners/footcontour.jpg">Foot Contour - graphite/pencil 02.28.2017</div>
@@ -495,7 +477,15 @@
     <!-- Slick JavaScript -->
     <script src="./slick/slick.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
-
+      $(document).ready(function(){
+        var slickOpts = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        autoplay: true
+      };
+      $('.slider').slick(slickOpts);
+      });
     </script>
 </body>
 
