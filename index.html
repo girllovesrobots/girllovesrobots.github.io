@@ -4,11 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Celestial Epiphany</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500&display=swap">
 </head>
 <body>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500&display=swap');
-
     * {
       margin: 0;
       padding: 0;
@@ -154,14 +155,18 @@
     .photo-gallery {
       position: relative;
       margin-top: 1rem;
-      overflow: hidden;
       border-radius: 8px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      height: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f5f0ea;
     }
 
     .photo-gallery img {
       max-width: 100%;
-      height: auto;
+      max-height: 450px;
       object-fit: contain;
       border-radius: 8px;
       margin: 0 auto;
@@ -207,9 +212,9 @@
      <li>Performance Curation and Consulting</li>
   </ul>
   <div class="photo-gallery">
-    <img src="corporate-1.jpg" alt="Aerial bartending at a private event, Photo Credit: Pamela S. Photography">
-    <img src="corporate-2.jpg" alt="Wedding Showcase, Photo Credit: Urban Light Studios">
-    <img src="corporate-3.jpg" alt="Character roving, Photo Credit: Pamela S. Photography">
+    <img src="corporate-1.jpg" alt="Aerial bartending at a private event, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
+    <img src="corporate-2.jpg" alt="Wedding Showcase, Photo Credit: Urban Light Studios" loading="lazy" decoding="async">
+    <img src="corporate-3.jpg" alt="Character roving, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
   </div>
 </div>
 
@@ -221,16 +226,16 @@
      <li class="service-pick" data-gallery="soirees">Intimate Soirées - Exclusively curated, boutique performances in enchanting atmospheres</li>
   </ul>
   <div class="photo-gallery" id="gallery-photoshoots">
-    <img src="photoshoot-1.jpg" alt="Aerial photoshoot session">
-    <img src="photoshoot-2.jpg" alt="Aerial photoshoot with props">
-    <img src="photoshoot-3.jpg" alt="Outdoor aerial photoshoot">
+    <img src="photoshoot-1.jpg" alt="Aerial photoshoot session" loading="lazy" decoding="async">
+    <img src="photoshoot-2.jpg" alt="Aerial photoshoot with props" loading="lazy" decoding="async">
+    <img src="photoshoot-3.jpg" alt="Outdoor aerial photoshoot" loading="lazy" decoding="async">
   </div>
   <div class="photo-gallery" id="gallery-soirees" style="display:none;">
-    <img src="soiree-1.jpg" alt="joy during performance, Photo Credit: Pamela S. Photography">
-    <img src="soiree-2.jpg" alt="afternoon aerial act at soirée, Photo Credit: Pamela S. Photography">
-    <img src="soiree-3.jpg" alt="Intimate garden soirée performance, Photo Credit: Pamela S. Photography">
-    <img src="soiree-4.jpg" alt="early evening aerial act at soirée, Photo Credit: Pamela S. Photography">
-    <img src="soiree-5.jpg" alt="evening soirée, Photo Credit: Pamela S. Photography">
+    <img src="soiree-1.jpg" alt="joy during performance, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
+    <img src="soiree-2.jpg" alt="afternoon aerial act at soirée, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
+    <img src="soiree-3.jpg" alt="Intimate garden soirée performance, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
+    <img src="soiree-4.jpg" alt="early evening aerial act at soirée, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
+    <img src="soiree-5.jpg" alt="evening soirée, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
   </div>
 </div>
 
@@ -257,8 +262,12 @@
     el.appendChild(link);
   })();
 </script>
-<p><img src="services.png" alt="Image" title="garden party highlights and services"></p>
+<p><img src="services.png" alt="Image" title="garden party highlights and services" loading="lazy" decoding="async"></p>
 <p class="photo-credit">Photo Credit: Pamela S. Photography</p>
+
+<footer style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #d4cfc8; text-align: center; font-size: 0.8rem; color: #999;">
+  &copy; 2026 Celestial Epiphany LLC. All rights reserved.
+</footer>
 
 <script>
   (function() {
