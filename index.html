@@ -152,20 +152,40 @@
     }
 
     .photo-gallery {
-      display: flex;
-      gap: 0.75rem;
+      position: relative;
       margin-top: 1rem;
-      flex-wrap: wrap;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
 
     .photo-gallery img {
-      flex: 1 1 30%;
-      min-width: 150px;
+      width: 100%;
       aspect-ratio: 16 / 9;
       object-fit: cover;
       border-radius: 8px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
       margin: 0;
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .photo-gallery img.visible {
+      display: block;
+    }
+
+    .service-pick {
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .service-pick:hover {
+      background: rgba(194, 168, 125, 0.2);
+    }
+
+    .service-pick.selected {
+      border-left-color: #1a1a2e;
+      background: rgba(194, 168, 125, 0.15);
+      font-weight: 500;
     }
 </style>
 
@@ -195,14 +215,22 @@
 
 <div class="tab-panel" id="tab-individuals">
   <h3>Experiences for Individuals</h3>
+  <p style="font-size:0.9rem; color:#5a5a6e; margin-bottom:0.5rem;">Select a service to view photos:</p>
   <ul>
-     <li>Aerial Photoshoots - Adventurous, one-of-a-kind sessions with curated props in extraordinary settings</li>
-     <li>Intimate Soirées - Exclusively curated, boutique performances in enchanting atmospheres</li>
+     <li class="service-pick selected" data-gallery="photoshoots">Aerial Photoshoots - Adventurous, one-of-a-kind sessions with curated props in extraordinary settings</li>
+     <li class="service-pick" data-gallery="soirees">Intimate Soirées - Exclusively curated, boutique performances in enchanting atmospheres</li>
   </ul>
-  <div class="photo-gallery">
-    <img src="individual-1.jpg" alt="outdoor photoshoot, Photo Credit: Pamela S. Photography">
-    <img src="individual-2.jpg" alt="outdoor photoshoot, Photo Credit: Pamela S. Photography">
-    <img src="individual-3.jpg" alt="garden party performer, Photo Credit: Pamela S. Photography">
+  <div class="photo-gallery" id="gallery-photoshoots">
+    <img src="photoshoot-1.jpg" alt="Aerial photoshoot session">
+    <img src="photoshoot-2.jpg" alt="Aerial photoshoot with props">
+    <img src="photoshoot-3.jpg" alt="Outdoor aerial photoshoot">
+  </div>
+  <div class="photo-gallery" id="gallery-soirees" style="display:none;">
+    <img src="soiree-1.jpg" alt="joy during performance, Photo Credit: Pamela S. Photography">
+    <img src="soiree-2.jpg" alt="afternoon aerial act at soirée, Photo Credit: Pamela S. Photography">
+    <img src="soiree-3.jpg" alt="Intimate garden soirée performance, Photo Credit: Pamela S. Photography">
+    <img src="soiree-4.jpg" alt="early evening aerial act at soirée, Photo Credit: Pamela S. Photography">
+    <img src="soiree-5.jpg" alt="evening soirée, Photo Credit: Pamela S. Photography">
   </div>
 </div>
 
@@ -234,12 +262,8 @@
 
 <script>
   (function() {
-    var tabs = ['corporate', 'individuals', 'events'];
     var btns = document.querySelectorAll('.tab-btn');
     var panels = document.querySelectorAll('.tab-panel');
-    var current = 0;
-    var interval = null;
-    var paused = false;
 
     function showTab(id) {
       btns.forEach(function(b) { b.classList.remove('active'); });
@@ -248,27 +272,70 @@
       var panel = document.getElementById('tab-' + id);
       if (btn) btn.classList.add('active');
       if (panel) panel.classList.add('active');
-      current = tabs.indexOf(id);
-    }
-
-    function startCycling() {
-      interval = setInterval(function() {
-        if (!paused) {
-          current = (current + 1) % tabs.length;
-          showTab(tabs[current]);
-        }
-      }, 4000);
     }
 
     btns.forEach(function(btn) {
       btn.addEventListener('click', function() {
-        paused = true;
-        clearInterval(interval);
         showTab(btn.getAttribute('data-tab'));
       });
     });
 
-    startCycling();
+    // Photo carousel: cycle images within each visible gallery
+    var carousels = {};
+    function startCarousel(gallery) {
+      var id = gallery.id || gallery.className;
+      if (carousels[id]) clearInterval(carousels[id]);
+      var imgs = gallery.querySelectorAll('img');
+      if (imgs.length === 0) return;
+      imgs.forEach(function(img) { img.classList.remove('visible'); });
+      var idx = 0;
+      imgs[0].classList.add('visible');
+      carousels[id] = setInterval(function() {
+        imgs[idx].classList.remove('visible');
+        idx = (idx + 1) % imgs.length;
+        imgs[idx].classList.add('visible');
+      }, 3000);
+    }
+
+    // Start carousels for initially visible galleries
+    document.querySelectorAll('.photo-gallery').forEach(function(gallery) {
+      if (gallery.style.display !== 'none' && gallery.closest('.tab-panel.active')) {
+        startCarousel(gallery);
+      }
+    });
+
+    // Service pick toggle for individuals tab
+    var picks = document.querySelectorAll('.service-pick');
+    picks.forEach(function(pick) {
+      pick.addEventListener('click', function() {
+        picks.forEach(function(p) { p.classList.remove('selected'); });
+        pick.classList.add('selected');
+        var target = pick.getAttribute('data-gallery');
+        var panel = pick.closest('.tab-panel');
+        panel.querySelectorAll('.photo-gallery').forEach(function(g) {
+          g.style.display = 'none';
+        });
+        var gallery = document.getElementById('gallery-' + target);
+        if (gallery) {
+          gallery.style.display = 'block';
+          startCarousel(gallery);
+        }
+      });
+    });
+
+    // Restart carousels when switching tabs
+    btns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        setTimeout(function() {
+          var activePanel = document.querySelector('.tab-panel.active');
+          if (activePanel) {
+            activePanel.querySelectorAll('.photo-gallery').forEach(function(g) {
+              if (g.style.display !== 'none') startCarousel(g);
+            });
+          }
+        }, 50);
+      });
+    });
   })();
 </script>
 
