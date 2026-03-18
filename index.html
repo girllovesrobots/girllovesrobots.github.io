@@ -150,6 +150,23 @@
       from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    .photo-gallery {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .photo-gallery img {
+      flex: 1 1 30%;
+      min-width: 150px;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      margin: 0;
+    }
 </style>
 
 <h1 id="celestial-ephiphany">Celestial Ephiphany LLC</h1>
@@ -169,6 +186,11 @@
      <li>Aerial Bartending and Food Service</li>
      <li>Performance Curation and Consulting</li>
   </ul>
+  <div class="photo-gallery">
+    <img src="corporate-1.jpg" alt="Aerial bartending at a private event, Photo Credit: Pamela S. Photography">
+    <img src="corporate-2.jpg" alt="Wedding Showcase, Photo Credit: Urban Light Studios">
+    <img src="corporate-3.jpg" alt="Character roving, Photo Credit: Pamela S. Photography">
+  </div>
 </div>
 
 <div class="tab-panel" id="tab-individuals">
@@ -177,6 +199,11 @@
      <li>Aerial Photoshoots - Adventurous, one-of-a-kind sessions with curated props in extraordinary settings</li>
      <li>Intimate Soirées - Exclusively curated, boutique performances in enchanting atmospheres</li>
   </ul>
+  <div class="photo-gallery">
+    <img src="individual-1.jpg" alt="outdoor photoshoot, Photo Credit: Pamela S. Photography">
+    <img src="individual-2.jpg" alt="outdoor photoshoot, Photo Credit: Pamela S. Photography">
+    <img src="individual-3.jpg" alt="garden party performer, Photo Credit: Pamela S. Photography">
+  </div>
 </div>
 
 <div class="tab-panel" id="tab-events">
