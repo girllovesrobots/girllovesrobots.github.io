@@ -160,11 +160,11 @@
     }
 
     .photo-gallery img {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
       border-radius: 8px;
-      margin: 0;
+      margin: 0 auto;
       display: none;
       animation: fadeIn 0.5s ease;
     }
@@ -282,6 +282,15 @@
 
     // Photo carousel: cycle images within each visible gallery
     var carousels = {};
+    var scrolling = false;
+    var scrollTimer = null;
+
+    window.addEventListener('scroll', function() {
+      scrolling = true;
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(function() { scrolling = false; }, 300);
+    }, { passive: true });
+
     function startCarousel(gallery) {
       var id = gallery.id || gallery.className;
       if (carousels[id]) clearInterval(carousels[id]);
@@ -291,10 +300,11 @@
       var idx = 0;
       imgs[0].classList.add('visible');
       carousels[id] = setInterval(function() {
+        if (scrolling) return;
         imgs[idx].classList.remove('visible');
         idx = (idx + 1) % imgs.length;
         imgs[idx].classList.add('visible');
-      }, 3000);
+      }, 6000);
     }
 
     // Start carousels for initially visible galleries
