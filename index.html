@@ -1,28 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Celestial Epiphany</title>
 </head>
 <body>
 <style>
     * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: sans-serif;
+    }
+
+    body {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      line-height: 1.6;
+      color: #222;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 0.75rem;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.4rem;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 1rem 0;
+    }
+
+    a {
+      color: #1a6fb5;
+      word-break: break-word;
     }
 </style>
 
 <h1 id="celestial-ephiphany">Celestial Ephiphany LLC</h1>
 <p>Celestial Ephiphany LLC is focused on curating bespoke performances and outdoor recreation experiences.</p>
 
-  <h3>services we offer...</h3>
+  <h3>Services for Corporate &amp; Private Events</h3>
   <ul>
      <li>Aerial Performance - Ambient and Feature Acts</li>
      <li>Roving Performers - Hula Hoop, Acrobatics, Flow Fans, Juggling</li>
      <li>Aerial Bartending and Food Service</li>
      <li>Performance Curation and Consulting</li>
   </ul>
+
+  <h3>Experiences for Individuals</h3>
+  <ul>
+     <li>Aerial Photoshoots - Adventurous, one-of-a-kind sessions with curated props in extraordinary settings</li>
+     <li>Intimate Soirées - Exclusively curated, boutique performances in enchanting atmospheres</li>
+  </ul>
+
+  <h3>Upcoming Events</h3>
+  <ul>
+     <li><strong>May 22, 2026</strong> - Seattle Asian Art Museum — "Our Stories (A)Live"</li>
+  </ul>
   
-<p>For any inquires, please reach out on Instagram through <a href="https://instagram.com/celestialepiphany.art">@celestialepiphany.art</a> </p>
-<p><img src="services.png" alt="Image" title="garden party highlights and services" width="1080" height="987"></p>
+<h3>Contact Us</h3>
+<p>For any inquiries, please reach out on Instagram through <a href="https://instagram.com/celestialepiphany.art">@celestialepiphany.art</a></p>
+<p>Or email us at: <span id="contact-email">[Enable JavaScript to see email]</span></p>
+<script>
+  (function() {
+    var u = 'info';
+    var d = 'celestialepiphany.art';
+    var el = document.getElementById('contact-email');
+    var addr = u + '@' + d;
+    var link = document.createElement('a');
+    link.href = 'mai' + 'lto:' + addr;
+    link.textContent = addr;
+    el.textContent = '';
+    el.appendChild(link);
+  })();
+</script>
+<p><img src="services.png" alt="Image" title="garden party highlights and services"></p>
 <p>Photo Credit: Pamela S. Photography</p>
 
 </body>
