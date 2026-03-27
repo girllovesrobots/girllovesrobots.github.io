@@ -190,6 +190,32 @@
       display: block;
     }
 
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin: 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    @media (max-width: 600px) {
+      .photo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-grid img {
+        height: 220px;
+      }
+    }
+
     .service-pick {
       cursor: pointer;
       transition: all 0.2s ease;
@@ -223,7 +249,7 @@
      <li>Aerial Bartending and Food Service</li>
      <li>Performance Curation and Consulting</li>
   </ul>
-  <div class="photo-gallery">
+  <div class="photo-grid">
     <img src="corporate-1.jpg" alt="Aerial bartending at a private event, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
     <img src="corporate-2.jpg" alt="Wedding Showcase, Photo Credit: Urban Light Studios" loading="lazy" decoding="async">
     <img src="corporate-3.jpg" alt="Character roving, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
