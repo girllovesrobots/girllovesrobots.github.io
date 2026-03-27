@@ -85,6 +85,12 @@
       margin: 1.5rem 0;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    img.loaded {
+      opacity: 1;
     }
 
     a {
@@ -172,6 +178,12 @@
       margin: 0 auto;
       display: none;
       animation: fadeIn 0.5s ease;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .photo-gallery img.loaded {
+      opacity: 1;
     }
 
     .photo-gallery img.visible {
@@ -264,6 +276,17 @@
 </script>
 <p><img src="services.png" alt="Image" title="garden party highlights and services" loading="lazy" decoding="async"></p>
 <p class="photo-credit">Photo Credit: Pamela S. Photography</p>
+
+<script>
+  document.querySelectorAll('img').forEach(function(img) {
+    if (img.complete) {
+      img.classList.add('loaded');
+    } else {
+      img.addEventListener('load', function() { img.classList.add('loaded'); });
+      img.addEventListener('error', function() { img.classList.add('loaded'); });
+    }
+  });
+</script>
 
 <footer style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #d4cfc8; text-align: center; font-size: 0.8rem; color: #999;">
   &copy; 2026 Celestial Epiphany LLC. All rights reserved.
