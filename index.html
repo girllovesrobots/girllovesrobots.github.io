@@ -216,24 +216,57 @@
       }
     }
 
-    .service-pick {
-      cursor: pointer;
-      transition: all 0.2s ease;
+    /* Scrolling banner */
+    .scrolling-banner {
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      border-radius: 12px;
     }
 
-    .service-pick:hover {
-      background: rgba(194, 168, 125, 0.2);
+    .scrolling-banner-track {
+      display: flex;
+      width: max-content;
+      animation: scroll-left 35s linear infinite;
     }
 
-    .service-pick.selected {
-      border-left-color: #1a1a2e;
-      background: rgba(194, 168, 125, 0.15);
-      font-weight: 500;
+    .scrolling-banner-track img {
+      height: 220px;
+      width: auto;
+      object-fit: cover;
+      margin-right: 0.75rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      flex-shrink: 0;
+      opacity: 1;
+    }
+
+    .scrolling-banner-track img.loaded {
+      opacity: 1;
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 </style>
 
 <h1 id="celestial-ephiphany">Celestial Ephiphany LLC</h1>
 <p>Celestial Ephiphany LLC is focused on curating bespoke performances and outdoor recreation experiences.</p>
+
+<div class="scrolling-banner">
+  <div class="scrolling-banner-track">
+    <img src="soiree-1.jpg" alt="joy during performance, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
+    <img src="soiree-2.jpg" alt="afternoon aerial act at soirée, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
+    <img src="soiree-3.jpg" alt="Intimate garden soirée performance, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
+    <img src="soiree-4.jpg" alt="early evening aerial act at soirée, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
+    <img src="soiree-5.jpg" alt="evening soirée, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
+    <img src="soiree-1.jpg" alt="joy during performance, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
+    <img src="soiree-2.jpg" alt="afternoon aerial act at soirée, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
+    <img src="soiree-3.jpg" alt="Intimate garden soirée performance, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
+    <img src="soiree-4.jpg" alt="early evening aerial act at soirée, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
+    <img src="soiree-5.jpg" alt="evening soirée, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
+  </div>
+</div>
 
 <div class="tab-nav">
   <button class="tab-btn active" data-tab="corporate">Corporate &amp; Private Events</button>
@@ -258,22 +291,14 @@
 
 <div class="tab-panel" id="tab-individuals">
   <h3>Experiences for Individuals</h3>
-  <p style="font-size:0.9rem; color:#5a5a6e; margin-bottom:0.5rem;">Select a service to view photos:</p>
   <ul>
-     <li class="service-pick selected" data-gallery="photoshoots">Aerial Photoshoots - Adventurous, one-of-a-kind sessions curated in extraordinary settings</li>
-     <li class="service-pick" data-gallery="soirees">Intimate Soirées - Exclusively curated, boutique performances in enchanting atmospheres</li>
+     <li>Aerial Photoshoots - Adventurous, one-of-a-kind sessions curated in extraordinary settings</li>
+     <li>Intimate Soirées - Exclusively curated, boutique performances in enchanting atmospheres</li>
   </ul>
-  <div class="photo-gallery" id="gallery-photoshoots">
+  <div class="photo-grid">
     <img src="photoshoot-1.jpg" alt="Aerial photoshoot session" loading="lazy" decoding="async">
     <img src="photoshoot-2.jpg" alt="Aerial photoshoot with props" loading="lazy" decoding="async">
     <img src="photoshoot-3.jpg" alt="Outdoor aerial photoshoot" loading="lazy" decoding="async">
-  </div>
-  <div class="photo-gallery" id="gallery-soirees" style="display:none;">
-    <img src="soiree-1.jpg" alt="joy during performance, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
-    <img src="soiree-2.jpg" alt="afternoon aerial act at soirée, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
-    <img src="soiree-3.jpg" alt="Intimate garden soirée performance, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
-    <img src="soiree-4.jpg" alt="early evening aerial act at soirée, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
-    <img src="soiree-5.jpg" alt="evening soirée, Photo Credit: Pamela S. Photography" loading="lazy" decoding="async">
   </div>
 </div>
 
@@ -338,72 +363,7 @@
       });
     });
 
-    // Photo carousel: cycle images within each visible gallery
-    var carousels = {};
-    var scrolling = false;
-    var scrollTimer = null;
 
-    window.addEventListener('scroll', function() {
-      scrolling = true;
-      clearTimeout(scrollTimer);
-      scrollTimer = setTimeout(function() { scrolling = false; }, 300);
-    }, { passive: true });
-
-    function startCarousel(gallery) {
-      var id = gallery.id || gallery.className;
-      if (carousels[id]) clearInterval(carousels[id]);
-      var imgs = gallery.querySelectorAll('img');
-      if (imgs.length === 0) return;
-      imgs.forEach(function(img) { img.classList.remove('visible'); });
-      var idx = 0;
-      imgs[0].classList.add('visible');
-      carousels[id] = setInterval(function() {
-        if (scrolling) return;
-        imgs[idx].classList.remove('visible');
-        idx = (idx + 1) % imgs.length;
-        imgs[idx].classList.add('visible');
-      }, 6000);
-    }
-
-    // Start carousels for initially visible galleries
-    document.querySelectorAll('.photo-gallery').forEach(function(gallery) {
-      if (gallery.style.display !== 'none' && gallery.closest('.tab-panel.active')) {
-        startCarousel(gallery);
-      }
-    });
-
-    // Service pick toggle for individuals tab
-    var picks = document.querySelectorAll('.service-pick');
-    picks.forEach(function(pick) {
-      pick.addEventListener('click', function() {
-        picks.forEach(function(p) { p.classList.remove('selected'); });
-        pick.classList.add('selected');
-        var target = pick.getAttribute('data-gallery');
-        var panel = pick.closest('.tab-panel');
-        panel.querySelectorAll('.photo-gallery').forEach(function(g) {
-          g.style.display = 'none';
-        });
-        var gallery = document.getElementById('gallery-' + target);
-        if (gallery) {
-          gallery.style.display = 'block';
-          startCarousel(gallery);
-        }
-      });
-    });
-
-    // Restart carousels when switching tabs
-    btns.forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        setTimeout(function() {
-          var activePanel = document.querySelector('.tab-panel.active');
-          if (activePanel) {
-            activePanel.querySelectorAll('.photo-gallery').forEach(function(g) {
-              if (g.style.display !== 'none') startCarousel(g);
-            });
-          }
-        }, 50);
-      });
-    });
   })();
 </script>
 
